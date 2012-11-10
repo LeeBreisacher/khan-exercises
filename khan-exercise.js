@@ -2086,10 +2086,10 @@ var Khan = (function() {
             var curTime = new Date().getTime();
             var data = buildAttemptData(pass, ++attempts, JSON.stringify(validator.guess), curTime);
             debugLog("attempt " + JSON.stringify(data));
-            request("problems/" + problemNum + "/attempt", data, function() {
+            request("problems/" + problemNum + "/attempt", data, function(userExercise) {
 
                 // TODO: Save locally if offline
-                $(Khan).trigger("attemptSaved");
+                $(Khan).trigger("attemptSaved", userExercise);
 
             }, function(xhr) {
 
